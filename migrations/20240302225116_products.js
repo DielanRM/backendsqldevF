@@ -9,7 +9,7 @@ exports.up = function(knex, promise) {
             table.increments('product_id').primary();
             table.string('name_product');
             table.text('description');
-            table.decimal('price', 7, 2);
+            table.decimal('price', 7, 2).unique();
             table.integer('sku');
         })
     }

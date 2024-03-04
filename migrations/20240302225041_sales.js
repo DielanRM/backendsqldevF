@@ -6,10 +6,12 @@ exports.up = function(knex) {
     return knex.schema.hasTable('sales').then(function(exists){
         if(!exists){
             return knex.schema.createTable('sales', function(table){
-                table.increments('product_id').primary();
-                table.string('name_product');
+                table.increments('id').primary();
+                table.integer('product_id').unsigned().references('product_id').inTable('products');
+                table.integer('customer_id').unsigned().references('customer_id').inTable('customers');
                 table.smallint('units');
-                table.decimal('price', 7, 2);
+                table.decimal('price_fk', 7, 2).references('price').inTable('products');
+                table.decimal('total', 7, 2);
             })
         }
       })
