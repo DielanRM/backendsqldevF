@@ -8,9 +8,9 @@ module.exports = {
   development: {
     client: 'postgresql',
     connection: {
-      host: "127.0.0.1",
+      host: '127.0.0.1',
       database: 'abarrotesDonRufino',
-      user:     'postgres',
+      user: 'postgres',
       password: 'diego9',
       port: 5432
     },
@@ -27,7 +27,7 @@ module.exports = {
     client: 'postgresql',
     connection: {
       database: 'my_db',
-      user:     'username',
+      user: 'username',
       password: 'password'
     },
     pool: {
@@ -43,7 +43,7 @@ module.exports = {
     client: 'postgresql',
     connection: {
       database: 'my_db',
-      user:     'username',
+      user: 'username',
       password: 'password'
     },
     pool: {
@@ -55,4 +55,4 @@ module.exports = {
     }
   }
 
-};
+}
