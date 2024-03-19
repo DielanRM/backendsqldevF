@@ -1,7 +1,13 @@
-//
+const { create } = require('../models/Products.js')
 
 const createProduct = (req, res) => {
-  res.send({ msg: 'Producto creado' })
+  create(req.body)
+    .then((product) => {
+      res.status(201).send(product)
+    })
+    .catch((error) => {
+      res.status(400).send({ msg: error })
+    })
 }
 
 module.exports = { createProduct }
