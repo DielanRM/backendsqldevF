@@ -8,4 +8,9 @@ const create = (bodyCustomer) => {
     .returning('*')
 }
 
-module.exports = { create }
+const findAll = () => {
+  return knex.select('*')
+    .from('customers')
+}
+
+module.exports = { create, findAll }

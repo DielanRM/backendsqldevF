@@ -1,4 +1,4 @@
-const { create } = require('../models/Customers.js')
+const { create, findAll } = require('../models/Customers.js')
 
 const createCustomer = (req, res) => {
   create(req.body)
@@ -11,9 +11,9 @@ const createCustomer = (req, res) => {
 }
 
 const getAllCustomers = (req, res) => {
-  create(req.body)
-    .then((customer) => {
-      res.status(201).send(customer)
+  findAll()
+    .then((customers) => {
+      res.status(201).send(customers)
     })
     .catch((error) => {
       res.status(400).send({ msg: error })
