@@ -3,6 +3,7 @@ const router = expres.Router()
 
 const customerController = require('../controllers/customerController.js')
 
-router.get('/customers', customerController.createCustomer)
+router.post('/customers', customerController.createCustomer)
+router.get('/customers', customerController.getAllCustomers)
 
 module.exports = router
