@@ -4,6 +4,7 @@ const express = require('express')
 // Rutas importadas
 const productRoutes = require('./routes/productRoutes.js')
 const customerRoutes = require('./routes/customerRoutes.js')
+const salesRoutes = require('./routes/salesRoutes.js')
 
 const app = express()
 
@@ -14,6 +15,7 @@ app.use(express.json())
 // Rutas
 app.use('/api/v1', productRoutes)
 app.use('/api/v1', customerRoutes)
+app.use('/api/v1', salesRoutes)
 
 // Servidor escuchando
 app.listen(3000, () => {
