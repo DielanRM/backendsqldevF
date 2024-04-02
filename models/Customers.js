@@ -28,4 +28,11 @@ const update = (customerId, bodyToUpdate) => {
     .returning('*')
 }
 
-module.exports = { create, findAll, findOne, update }
+const destroyData = (customerId) => {
+  return knex
+    .del()
+    .from('customers')
+    .where('customer_id', customerId)
+}
+
+module.exports = { create, findAll, findOne, update, destroyData }
