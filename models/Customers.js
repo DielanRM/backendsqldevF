@@ -13,4 +13,19 @@ const findAll = () => {
     .from('customers')
 }
 
-module.exports = { create, findAll }
+const findOne = (customerId) => {
+  return knex
+    .select('*')
+    .from('customers')
+    .where('customer_id', customerId)
+}
+
+const update = (customerId, bodyToUpdate) => {
+  return knex
+    .update(bodyToUpdate)
+    .from('customers')
+    .where('customer_id', customerId)
+    .returning('*')
+}
+
+module.exports = { create, findAll, findOne, update }
