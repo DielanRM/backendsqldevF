@@ -13,4 +13,26 @@ const findAll = () => {
     .from('products')
 }
 
-module.exports = { create, findAll }
+const findOne = (productId) => {
+  return knex
+    .select('*')
+    .from('products')
+    .where('product_id', productId)
+}
+
+const updateProduct = (productId, bodyToUpdate) => {
+  return knex
+    .update(bodyToUpdate)
+    .from('products')
+    .where('product_id', productId) //   DUDA EL PONER EL . ANTES DE LA FUNCION ES COMO SI COLOCARA EN CADA LINEA (return knex."funcion")?
+    .returning('*')
+}
+
+const destroyProduct = (productId) => {
+  return knex
+    .del()
+    .from('products')
+    .where('product_id', productId)
+}
+
+module.exports = { create, findAll, findOne, updateProduct, destroyProduct }

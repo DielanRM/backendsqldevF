@@ -1,4 +1,4 @@
-const { create, findAll } = require('../models/Products.js')
+const { create, findAll, findOne, updateProduct, destroyProduct } = require('../models/Products.js')
 
 const createProduct = (req, res) => {
   create(req.body)
@@ -13,11 +13,41 @@ const createProduct = (req, res) => {
 const getAllProducts = (req, res) => {
   findAll()
     .then((products) => {
-      res.status(201).send(products)
+      res.status(200).send(products)
     })
     .catch((error) => {
       res.status(400).send({ msg: error })
     })
 }
 
-module.exports = { createProduct, getAllProducts }
+const getOneProduct = (req, res) => {
+  findOne(req.params.productId)
+    .then((products) => {
+      res.status(200).send(products)
+    })
+    .catch((error) => {
+      res.status(400).send({ msg: error })
+    })
+}
+
+const updateOneProduct = (req, res) => {
+  updateProduct(req.params.productId, req.body)
+    .then((products) => {
+      res.status(200).send(products)
+    })
+    .catch((error) => {
+      res.status(400).send({ msg: error })
+    })
+}
+
+const deleteOneProduct = (req, res) => {
+  destroyProduct(req.params.productId)
+    .then(() => {
+      res.status(204).send()
+    })
+    .catch((error) => {
+      res.status(400).send({ msg: error })
+    })
+}
+
+module.exports = { createProduct, getAllProducts, getOneProduct, updateOneProduct, deleteOneProduct }
